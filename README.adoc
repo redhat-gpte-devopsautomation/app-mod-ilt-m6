@@ -1,0 +1,80 @@
+# Modern Application Development Dev Track - Module 4
+:experimental:
+:imagesdir: documentation/modules/ROOT/assets/images
+
+// image::https://github.com/danieloh30/mad-dev-m1-guides/workflows/docs/badge.svg[docs]
+
+## Overview
+
+|===
+|Audience Experience Level |Beginner
+|Average Time to Complete	 |60 minutes
+|===
+
+This workshop aims to showcase how to enhance applications with API management and event streaming technologies.
+
+## Key Takeaways
+
+* The introduction of a streaming platform (Apache Kafka) to generate a stream of user activity events from the application web UI. 
+* The introduction of an API Management solution (Red Hat OpenShift API management) to expose, secure and manage the APIs to the application backend services. 
+* API First approach to design, host schema, mock APIs to  allows parallel streams of development between API implementers and API consumers.
+
+## Technology Stack
+
+* Red Hat OpenShift API Management
+* Red Hat OpenShift Streams for Apache Kafka
+* Red Hat build of Quarkus
+* OpenShift API Designer
+* OpenShift API Service Registry
+* OpenShift Connectors
+* Microcks/Postman
+* Quay
+
+## Documentation
+
+This workshop is based on link:https://antora.org/[Antora] and link:https://github.com/redhat-scholars/courseware-template[Red Hat scholars template] to build HTML based tutorials.
+
+
+### Lab Parameters
+
+This lab supports both link:site.yml#L17[Antora variables] than query parameters. Query params makes the workshop content dynamic, like URLs specific for your cluster to copy and paste.
+
+NOTE: In the table above, CRC and Playground links use them.
+
+Here's the list of all query params used (they are all optional, but generated links won't work unless at least `CLUSTER_SUBDOMAIN` is set):
+
+[%header,cols=2*] 
+|===
+|PARAM
+|Description
+
+|`USERID`
+| The username of your OpenShift cluster
+
+|`SUBDOMAIN`
+|The subdomain for your OpenShift cluster in the form `apps.<cluster_name>.<base_domain>`, e.g. `apps.openshift.mydomain.tld`
+
+
+|===
+
+Example [Dev Mode]:
+
+http://localhost:3000/mad-dev-guides-m4/main/introduction.html?USERID=user1&SUBDOMAIN=cluster-sdfd.sdfsf.sandbox1043.opentlc.com
+
+## Deploy to OpenShift
+
+[.console-input]
+[source,bash]
+----
+oc new-app  https://github.com/RedHat-Middleware-Workshops/mad-dev-guides-m4.git --strategy=docker
+
+oc expose deploy mad-dev-guides-m4 --port 3000
+
+oc create route edge mad-dev-guides-m4 --service=mad-dev-guides-m4
+----
+
+## Contributing
+
+Please refer to the link:CONTRIBUTING.adoc#contributing-guide[how to contribute] on how you can contribute to the tutorial.
+
+ 
